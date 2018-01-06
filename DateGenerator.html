@@ -1,0 +1,118 @@
+<!--Created by James Pearson 8/8/16, last updated 28/12/17-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Date Generator</title>
+		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" href="favicon.ico" type="image/ico">
+		<link rel="stylesheet" href="style.css" type="text/css" >
+	</head>
+	<body>
+		<div id="topbar">
+			<h1>Date Generator</h1>
+			<p id="dateToday"></p>
+
+			<input type="checkbox" id="monthStart" onClick="window.location.reload()">
+			<label for="monthStart">Begin at start of month (unchecked) or today's date (checked)</label>
+			<br>
+			<input type="checkbox" id="yearSelect" onClick="window.location.reload()">
+			<label for="yearSelect">This year (unchecked) or next year (checked)</label>
+			<br>
+			<label for="monthSelect">Choose the month to display:&nbsp; </label>
+			<select id="monthSelect" onChange="window.location.reload()">
+				<option value="current">This Month</option>
+				<option value="0">January (1)</option>
+				<option value="1">February (2)</option>
+				<option value="2">March (3)</option>
+				<option value="3">April (4)</option>
+				<option value="4">May (5)</option>
+				<option value="5">June (6)</option>
+				<option value="6">July (7)</option>
+				<option value="7">August (8)</option>
+				<option value="8">September (9)</option>
+				<option value="9">October (10)</option>
+				<option value="10">November (11)</option>
+				<option value="11">December (12)</option>
+			</select> 
+			<br>
+		</div>
+
+		<p id="output"></p>
+		
+		<script>
+			var today = new Date();
+			//Uncomment to test different dates
+			//today.setDate(13);
+			//today.setMonth(1); //Remember here that 0 is January
+			//today.setFullYear(2018);
+			
+			//start at first day of month if checkbox ticked
+			if (document.getElementById("monthStart").checked == false){
+				today.setDate(1);
+			}
+			//select this year or next year
+			if (document.getElementById("yearSelect").checked == true){
+				today.setFullYear(today.getFullYear()+1);
+			}
+			//get the month the user wants to use
+			var month = document.getElementById("monthSelect").value;
+			if (month != "current"){
+				today.setMonth(month);
+			} 
+
+			
+			//get today's date
+			var day = today.getDay();
+			var dd = today.getDate();
+			var mm = today.getMonth()+1; 	//January was 0 but is now 1
+			var yyyy = today.getFullYear();
+			yy = yyyy - 2000;				//makes date two digit (16) rather than 2016
+
+			//puts days of the week into an array so you print name not number
+			var dayname = new Array(7);
+				dayname[0]=  "Sunday";
+				dayname[1] = "Monday";
+				dayname[2] = "Tuesday";
+				dayname[3] = "Wednesday";
+				dayname[4] = "Thursday";
+				dayname[5] = "Friday";
+				dayname[6] = "Saturday";
+
+			//Pick correct number of days for each month
+			//30 days has September (9), April (4), June (6) and November (11)
+			//February has 28 except leap years	
+			var monthlength = 0;
+			if (mm == 9 || mm == 4 || mm == 6 || mm == 11){
+				monthlength = 30;
+			}
+			else if(mm == 2){
+				monthlength = 28;
+				//Leap years are every four years, if year is divisible by 4 then it is a leap year
+				if (yy%4 ==0){
+					monthlength = 29;
+				}
+			}
+			else{
+				monthlength = 31;
+			}
+			
+			while (dd<=monthlength){
+				//change numbers into names of days
+				var dayofweek = dayname[day]; 
+				//output correct format for the date
+				var today = dd+"/"+mm+"/"+yy+" ("+dayofweek+")";
+				//printed with last output into <p> labelled output
+				output.innerHTML += today + "<br>";
+
+				//move onto the next day
+				dd++;
+				day++;
+				//loop into next week when week ends
+				if (day>6){
+					day = 0;
+				}
+			}
+		</script>
+	</body>
+</html>

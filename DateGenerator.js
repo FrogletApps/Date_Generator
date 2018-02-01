@@ -27,7 +27,7 @@ var yyyy = today.getFullYear();
 yy = yyyy - 2000;				//makes date two digit (16) rather than 2016
 
 //puts days of the week into an array so you print name not number
-var dayname = new Array(7);
+var dayname = [];
     dayname[0]=  "Sunday";
     dayname[1] = "Monday";
     dayname[2] = "Tuesday";

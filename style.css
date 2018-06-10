@@ -23,8 +23,12 @@ p {
 label, input{
 	font-family: "Segoe UI", Roboto, Ubuntu, sans-serif;
 	text-align: center;
-	cursor: pointer;
 	color: #FFF;
+	line-height: 1.7em;
+}
+
+.checkbox{
+	cursor: pointer;
 }
 
 select{

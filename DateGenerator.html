@@ -1,4 +1,4 @@
-<!--Created by James Pearson 8/8/16, last updated 28/12/17-->
+<!--Created by James Pearson 08/08/2016, last updated 10/06/2018-->
 
 <!DOCTYPE html>
 <html>
@@ -13,11 +13,20 @@
 			<h1>Date Generator</h1>
 			<p id="dateToday"></p>
 
-			<input type="checkbox" id="monthStart" onClick="window.location.reload()">
-			<label for="monthStart">Begin at start of month (unchecked) or today's date (checked)</label>
+			<input type="checkbox" class="checkbox" id="monthStart" onClick="window.location.reload()">
+			<label class="checkbox" for="monthStart">Begin at start of month (unchecked) or today's date (checked)</label>
 			<br>
-			<input type="checkbox" id="yearSelect" onClick="window.location.reload()">
-			<label for="yearSelect">This year (unchecked) or next year (checked)</label>
+			<input type="checkbox" class="checkbox" id="yearSelect" onClick="window.location.reload()">
+			<label class="checkbox" for="yearSelect">This year (unchecked) or next year (checked)</label>
+			<br>			
+			<label for="dateFormatSelect">Choose a date format:&nbsp; </label>
+			<select id="dateFormatSelect" onChange="window.location.reload()">
+				<option value="0">D/M/YY</option>
+				<option value="1">D/M/YYYY</option>
+				<option value="2">DD/MM/YY</option>
+				<option value="3">DD/MM/YYYY</option>
+				<option value="4">YYYY-MM-DD</option>
+			</select> 
 			<br>
 			<label for="monthSelect">Choose the month to display:&nbsp; </label>
 			<select id="monthSelect" onChange="window.location.reload()">

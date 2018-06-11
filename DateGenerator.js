@@ -35,13 +35,13 @@ var mm = "";                    //m is month with no 0 padding, mm has padding
 
 //puts days of the week into an array so you print name not number
 var dayName = [];
-    dayName[0]=  "Sunday";
-    dayName[1] = "Monday";
-    dayName[2] = "Tuesday";
-    dayName[3] = "Wednesday";
-    dayName[4] = "Thursday";
-    dayName[5] = "Friday";
-    dayName[6] = "Saturday";
+dayName[0]=  "Sunday";
+dayName[1] = "Monday";
+dayName[2] = "Tuesday";
+dayName[3] = "Wednesday";
+dayName[4] = "Thursday";
+dayName[5] = "Friday";
+dayName[6] = "Saturday";
 
 //Pick correct number of days for each month
 //30 days has September (9), April (4), June (6) and November (11)
@@ -63,18 +63,9 @@ else{
 
 while (d<=monthLength){
     //add 0 padding for dd and mm when the values are less than 10
-    if (d < 10){
-        dd = "0" + d;
-    }
-    else{
-        dd = d;
-    }
-    if (m < 10){
-        mm = "0" + m;
-    }
-    else{
-        mm = m;
-    }
+    dd = startZero(d);
+    mm = startZero(m);
+
     //change numbers into names of days
     var dayOfWeek = dayName[day]; 
     //output date in the correct format
@@ -116,4 +107,16 @@ while (d<=monthLength){
     if (day>6){
         day = 0;
     }
+}
+
+//Add zeros onto the start of a number if it's less than 10
+function startZero(number){
+    var paddedNumber = "";
+    if (number < 10){
+        paddedNumber = "0" + number;
+    }
+    else{
+        paddedNumber = number
+    }
+    return paddedNumber;
 }

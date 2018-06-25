@@ -82,30 +82,30 @@ while (d<=monthLength){
     var dayOfWeek = dayName[day]; 
     //Output date in the correct format
     var today = "";
-    console.log("dateformat: " + dateFormat);
+    //console.log("dateformat: " + dateFormat);
     switch (dateFormat){
         case "0":
-            console.log("0");
+            //console.log("0");
             today = d+"/"+m+"/"+yy+" ("+dayOfWeek+")";
         break;
         case "1":
-            console.log("1");
+            //console.log("1");
             today = d+"/"+m+"/"+yyyy+" ("+dayOfWeek+")";
         break;
         case "2":
-            console.log("2");
+            //console.log("2");
             today = dd+"/"+mm+"/"+yy+" ("+dayOfWeek+")";
         break;
         case "3":
-            console.log("3");
+            //console.log("3");
             today = dd+"/"+mm+"/"+yyyy+" ("+dayOfWeek+")";
         break;
         case "4":
-            console.log("4");
+            //console.log("4");
             today = yyyy+"-"+mm+"-"+dd+" ("+dayOfWeek+")";
         break; 
         default:
-            console.log("5");
+            //console.log("5");
             today = d+"/"+m+"/"+yy+" ("+dayOfWeek+")";
     }
     

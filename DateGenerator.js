@@ -4,36 +4,48 @@ var today = new Date();
 //today.setMonth(1); //Remember here that 0 is January
 //today.setFullYear(2018);
 
-//start at first day of month if checkbox ticked
+//Start at first day of month if checkbox ticked
 if (document.getElementById("monthStart").checked == false){
     today.setDate(1);
 }
 
-//select this year or next year
+//Select this year or next year
 if (document.getElementById("yearSelect").checked == true){
     today.setFullYear(today.getFullYear()+1);
 }
 
-//get the month the user wants to use
+//Select whether to show weekends or not
+//This sets a variable which is used later and changes the text colour to blue
+var showWeekends = null;
+if (document.getElementById("weekendSelect").checked == true){
+    showWeekends = true;
+    //Set the colour of the text
+    output.style.color = "#0070c0";
+}
+else{
+    showWeekends = false;
+}
+
+//Get the month the user wants to use
 var month = document.getElementById("monthSelect").value;
 if (month != "current"){
     today.setMonth(month);
 }
 
-//get the date format the user wants to use
+//Get the date format the user wants to use
 var dateFormat = document.getElementById("dateFormatSelect").value;
 
-//get today's date (and set variables)
+//Get today's date (and set variables)
 var day = today.getDay();
 var d = today.getDate();
 var m = today.getMonth()+1; 	//January was 0 but is now 1
 var yyyy = today.getFullYear();
-var yy = yyyy - 2000;			//makes date two digit (16) rather than 2016
+var yy = yyyy - 2000;			//Makes date two digit (16) rather than 2016
 //dd and mm values are set later
 var dd = "";                    //d is day with no 0 padding, dd has padding
 var mm = "";                    //m is month with no 0 padding, mm has padding
 
-//puts days of the week into an array so you print name not number
+//Puts days of the week into an array so you print name not number
 var dayName = [];
 dayName[0]=  "Sunday";
 dayName[1] = "Monday";
@@ -62,13 +74,13 @@ else{
 }
 
 while (d<=monthLength){
-    //add 0 padding for dd and mm when the values are less than 10
+    //Add 0 padding for dd and mm when the values are less than 10
     dd = startZero(d);
     mm = startZero(m);
 
-    //change numbers into names of days
+    //Change numbers into names of days
     var dayOfWeek = dayName[day]; 
-    //output date in the correct format
+    //Output date in the correct format
     var today = "";
     console.log("dateformat: " + dateFormat);
     switch (dateFormat){
@@ -97,13 +109,16 @@ while (d<=monthLength){
             today = d+"/"+m+"/"+yy+" ("+dayOfWeek+")";
     }
     
-    //printed with last output into <p> labelled output
-    output.innerHTML += today + "<br>";
+    //If showWeekends is enabled and the day is a weekend then
+    // don't add the date onto the end of <p> labelled output
+    if (!(showWeekends && (day == 0 || day == 6))){
+        output.innerHTML += today + "<br>";
+    }
 
-    //move onto the next day
+    //Move onto the next day
     d++;
     day++;
-    //loop into next week when week ends
+    //Loop into next week when week ends
     if (day>6){
         day = 0;
     }

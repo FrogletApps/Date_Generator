@@ -1,4 +1,4 @@
-<!--Created by James Pearson 08/08/2016, last updated 10/06/2018-->
+<!--Created by James Pearson 08/08/2016, last updated 26/06/2018-->
 
 <!DOCTYPE html>
 <html>
@@ -6,24 +6,24 @@
 		<title>Date Generator</title>
 		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="icon" href="https://frogletapps.github.io/assets/favicon.ico" type="image/ico">
-		<link rel="stylesheet" href="style.css" type="text/css" >
+		<link rel="stylesheet" href="style.css" type="text/css">
 	</head>
 	<body>
 		<div id="topbar">
 			<h1>Date Generator</h1>
 			<p id="dateToday"></p>
 
-			<input type="checkbox" class="checkbox" id="monthStart" onClick="window.location.reload()">
+			<input type="checkbox" class="checkbox" id="monthStart" onClick="run()">
 			<label class="checkbox" for="monthStart">Begin at start of month (unchecked) or today's date (checked)</label>
 			<br>
-			<input type="checkbox" class="checkbox" id="yearSelect" onClick="window.location.reload()">
+			<input type="checkbox" class="checkbox" id="yearSelect" onClick="run()">
 			<label class="checkbox" for="yearSelect">This year (unchecked) or next year (checked)</label>
 			<br>
-			<input type="checkbox" class="checkbox" id="weekendSelect" onClick="window.location.reload()">
+			<input type="checkbox" class="checkbox" id="weekendSelect" onClick="run()">
 			<label class="checkbox" for="weekendSelect">Include weekends (unchecked) or ignore them (checked)</label>
 			<br>			
 			<label for="dateFormatSelect">Choose a date format:&nbsp; </label>
-			<select id="dateFormatSelect" onChange="window.location.reload()">
+			<select id="dateFormatSelect" onChange="run()">
 				<option value="0">D/M/YY</option>
 				<option value="1">D/M/YYYY</option>
 				<option value="2">DD/MM/YY</option>
@@ -32,7 +32,7 @@
 			</select> 
 			<br>
 			<label for="monthSelect">Choose the month to display:&nbsp; </label>
-			<select id="monthSelect" onChange="window.location.reload()">
+			<select id="monthSelect" onChange="run()">
 				<option value="current">This Month</option>
 				<option value="0">January (1)</option>
 				<option value="1">February (2)</option>

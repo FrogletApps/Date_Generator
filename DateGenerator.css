@@ -1,0 +1,23 @@
+p {
+	padding-left: 20px;
+	font-family: Calibri, sans-serif;
+}
+
+label, input{
+	font-family: "Segoe UI", Roboto, Ubuntu, sans-serif;
+	color: #FFF;
+	line-height: 1.7em;
+}
+
+.checkbox{
+	cursor: pointer;
+}
+
+select{
+	font-family: "Segoe UI", Roboto, Ubuntu, sans-serif;
+}
+
+#output{
+	text-align: left;
+	color: #000;
+}

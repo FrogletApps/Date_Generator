@@ -5,12 +5,17 @@ p {
 
 label, input{
 	font-family: "Segoe UI", Roboto, Ubuntu, sans-serif;
-	color: #FFF;
 	line-height: 1.7em;
 }
 
 .checkbox{
 	cursor: pointer;
+}
+
+#settingsBar{
+    text-align: center;
+    background-color: #89c489;
+    padding: 1%;
 }
 
 select{

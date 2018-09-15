@@ -1,4 +1,4 @@
-<!--Created by James Pearson 08/08/2016, last updated 26/06/2018-->
+<!--Created by James Pearson 08/08/2016, last updated 15/09/2018-->
 
 <!DOCTYPE html>
 <html>
@@ -10,10 +10,10 @@
 		<link rel="stylesheet" type="text/css" href="DateGenerator.css">
 	</head>
 	<body>
-		<div id="topbar">
+		<div id="topBar">
 			<h1>Date Generator</h1>
-			<p id="dateToday"></p>
-
+		</div>
+		<div id="settingsBar">
 			<input type="checkbox" class="checkbox" id="monthStart" onClick="run()">
 			<label class="checkbox" for="monthStart">Begin at start of month (unchecked) or today's date (checked)</label>
 			<br>
@@ -48,7 +48,6 @@
 				<option value="10">November (11)</option>
 				<option value="11">December (12)</option>
 			</select> 
-			<br>
 		</div>
 
 		<p id="output"></p>

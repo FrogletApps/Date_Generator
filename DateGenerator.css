@@ -14,10 +14,6 @@ label, input{
     padding: 1%;
 }
 
-select{
-	font-family: "Segoe UI", Roboto, Ubuntu, sans-serif;
-}
-
 #output{
 	text-align: left;
 	color: #000;

@@ -14,17 +14,17 @@
 			<h1>Date Generator</h1>
 		</div>
 		<div id="settingsBar">
-			<input type="checkbox" class="checkbox" id="monthStart" onClick="run()">
-			<label class="checkbox" for="monthStart">Begin at start of month (unchecked) or today's date (checked)</label>
+			<input type="checkbox" class="clickable" id="monthStart" onClick="run()">
+			<label class="clickable" for="monthStart">Begin at start of month (unchecked) or today's date (checked)</label>
 			<br>
-			<input type="checkbox" class="checkbox" id="yearSelect" onClick="run()">
-			<label class="checkbox" for="yearSelect">This year (unchecked) or next year (checked)</label>
+			<input type="checkbox" class="clickable" id="yearSelect" onClick="run()">
+			<label class="clickable" for="yearSelect">This year (unchecked) or next year (checked)</label>
 			<br>
-			<input type="checkbox" class="checkbox" id="weekendSelect" onClick="run()">
-			<label class="checkbox" for="weekendSelect">Include weekends (unchecked) or ignore them (checked)</label>
+			<input type="checkbox" class="clickable" id="weekendSelect" onClick="run()">
+			<label class="clickable" for="weekendSelect">Include weekends (unchecked) or ignore them (checked)</label>
 			<br>			
 			<label for="dateFormatSelect">Choose a date format:&nbsp; </label>
-			<select id="dateFormatSelect" onChange="run()">
+			<select id="dateFormatSelect" class="clickable" onChange="run()">
 				<option value="0">D/M/YY</option>
 				<option value="1">D/M/YYYY</option>
 				<option value="2">DD/MM/YY</option>
@@ -33,7 +33,7 @@
 			</select> 
 			<br>
 			<label for="monthSelect">Choose the month to display:&nbsp; </label>
-			<select id="monthSelect" onChange="run()">
+			<select id="monthSelect" class="clickable" onChange="run()">
 				<option value="current">This Month</option>
 				<option value="0">January (1)</option>
 				<option value="1">February (2)</option>

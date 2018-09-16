@@ -11,7 +11,13 @@ label, input{
 #settingsBar{
     text-align: center;
     background-color: #89c489;
-    padding: 1%;
+	padding: 1%;
+}
+
+#topLeft{
+	position: absolute;
+    top: 10px;
+    left: 20px;
 }
 
 #output{

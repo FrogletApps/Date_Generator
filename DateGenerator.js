@@ -146,3 +146,15 @@ function startZero(number){
     }
     return paddedNumber;
 }
+
+//Toggle the visibility of the settings bar
+function toggleVisibility(){
+    if(document.getElementById("settingsBar").style.display == "none"){
+        document.getElementById("settingsBar").style.display = "block";
+        document.getElementById("hideButton").value = "Hide";
+    }
+    else{
+        document.getElementById("settingsBar").style.display = "none";
+        document.getElementById("hideButton").value = "Show";
+    }
+}

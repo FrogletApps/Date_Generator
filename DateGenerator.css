@@ -16,14 +16,14 @@ label, input{
 }
 
 #output{
-	min-height: 5px;
-	width: calc(100% - 20px);
+	width: calc(100% - 60px);  /*Take into account the 60px left/right padding */
 	border: none;
 	overflow: hidden;
 	resize: none;
 
+	font-size: 16px;
 	text-align: left;
 	color: #000;
-	padding: 20px 0px 0px 30px;  /*Top, right, bottom, left*/
+	padding: 20px 30px 20px 30px;  /*Top, right, bottom, left*/
 	font-family: Calibri, sans-serif;
 }

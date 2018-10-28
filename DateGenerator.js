@@ -83,6 +83,9 @@ function run(){
         monthLength = 31;
     }
 
+    //Variable to count the number of rows generated
+    var rowCount = 0;
+
     while (d<=monthLength){
         //Add 0 padding for dd and mm when the values are less than 10
         dd = startZero(d);
@@ -120,9 +123,10 @@ function run(){
         }
         
         //If showWeekends is enabled and the day is a weekend then
-        // don't add the date onto the end of <p> labelled output
+        // don't add the date onto the end of an element with id "output"
         if (!(showWeekends && (day == 0 || day == 6))){
-            output.innerHTML += today + "<br>";
+            output.innerHTML += today + "\n";
+            rowCount++;
         }
 
         //Move onto the next day
@@ -133,6 +137,8 @@ function run(){
             day = 0;
         }
     }
+    //Set the number of rows to display in the textarea
+    output.rows = rowCount;
 }
 
 //Add zeros onto the start of a number if it's less than 10

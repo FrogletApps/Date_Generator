@@ -165,6 +165,12 @@ function toggleVisibility(){
     }
 }
 
+//Copy the dates to the clipboard
+function copyDates(){
+    document.getElementById("output").select();
+    document.execCommand("copy");
+}
+
 //Ensures that the page can work offline
 UpUp.start({
     "content-url": "DateGenerator.html",

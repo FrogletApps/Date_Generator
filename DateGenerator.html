@@ -24,13 +24,13 @@
 	</head>
 
 	<body>
-		<div id="topBar">
+		<div id="topBar" role="header">
 			<h1>Date Generator</h1>
 		</div>
-		<div id="topLeft">
+		<div id="topLeft" role="menu">
 			<input type="button" id="hideButton" value="Hide Options" onclick="toggleVisibility();" />
 		</div>
-		<div id="settingsBar">
+		<div id="settingsBar" role="menu" aria-label="Settings">
 			<input type="checkbox" id="monthStart" onClick="displayDates()">
 			<label class="clickable" for="monthStart">Begin at start of month (unchecked) or today's date (checked)</label>
 			<br>
@@ -70,7 +70,7 @@
 			<input type="button" value="Generate Word Document" onclick="exportDatesToWord();" />
 		</div>
 
-		<textarea id="output" onclick="this.select()"></textarea>
+		<textarea id="output" onclick="this.select()" aria-label="List of dates"></textarea>
 		
 		<script src="upup.min.js"></script>
 		<script src="DateGenerator.js"></script>

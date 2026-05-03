@@ -47,11 +47,10 @@ function getUserVariables(){
         today.setFullYear(today.getFullYear()+1);
     }
 
-    //Select whether to show weekends or not
-    //This sets a variable which is used later
-    var showWeekends = false;
+    //Hides weekends if the checkbox is ticked
+    var hideWeekends = false;
     if (document.getElementById("weekendSelect").checked == true){
-        showWeekends = true;
+        hideWeekends = true;
     }
 
     //Get the month the user wants to use
@@ -63,14 +62,14 @@ function getUserVariables(){
     //Get the date format the user wants to use
     var dateFormat = document.getElementById("dateFormatSelect").value;
 
-    return [today, dateFormat, showWeekends]
+    return [today, dateFormat, hideWeekends]
 }
 
 function generateDates(){
     var userVariables = getUserVariables();
     var today = userVariables[0];
     var dateFormat = userVariables[1];
-    var showWeekends = userVariables[2];
+    var hideWeekends = userVariables[2];
 
     var outputArray = [];
 
@@ -138,8 +137,8 @@ function generateDates(){
                 today = d+"/"+m+"/"+yy+" ("+dayOfWeek+")";
         }
         
-        //If showWeekends is false and the day is a weekend then don't add the date
-        if (!(!showWeekends && (day == 0 || day == 6))){
+        //Add the date (unless hideWeekends is true and the day is a weekend)
+        if (!(hideWeekends && (day == 0 || day == 6))){
             outputArray.push(today);
         }
 

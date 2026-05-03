@@ -1,29 +1,21 @@
-const testDatesArray = [
-    "Monday, May 4, 2026",
-    "Tuesday, May 5, 2026",
-    "Wednesday, May 6, 2026",
-    "Thursday, May 7, 2026",
-    "Friday, May 8, 2026",
-    "Saturday, May 9, 2026",
-    "Sunday, May 10, 2026"
-];
-
 //Puts days of the week into an array so you print name not number (Sunday is 0)
 const dayName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+var currentDatesArray = [];
 
 //Run the code when the page loads
 displayDates();
 
 function displayDates(){
-    datesArray = generateDates();
+    currentDatesArray = generateDates();
 
     //Clear the text
     document.getElementById("output").innerHTML = "";
 
     //Set the number of rows to display in the textarea
-    output.rows = datesArray.length;
+    output.rows = currentDatesArray.length;
 
-    for (const date of datesArray) {
+    for (const date of currentDatesArray) {
         output.innerHTML += date + "\n";
     }
 }
@@ -177,7 +169,7 @@ function copyDates(){
     document.execCommand("copy");
 }
 
-function exportDatesToWord(datesArray) {
+function exportDatesToWord() {
     // 1. Set up the Word-compatible HTML structure
     let htmlContent = `
         <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
@@ -191,7 +183,7 @@ function exportDatesToWord(datesArray) {
     `;
 
     // 2. Loop through your dates and create a row for each
-    datesArray.forEach(date => {
+    currentDatesArray.forEach(date => {
         htmlContent += `
             <tr>
                 <!-- The inline style here creates the line between dates -->

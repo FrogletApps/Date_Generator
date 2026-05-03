@@ -1,4 +1,4 @@
-<!--Created by James Pearson 08/08/2016, last updated 27/10/2018-->
+<!--Created by James Pearson 2016-08-08, last updated 2026-05-04-->
 
 <!DOCTYPE html>
 <html lang="en-gb">
@@ -31,17 +31,17 @@
 			<input type="button" id="hideButton" value="Hide" onclick="toggleVisibility();" />
 		</div>
 		<div id="settingsBar">
-			<input type="checkbox" id="monthStart" onClick="run()">
+			<input type="checkbox" id="monthStart" onClick="displayDates()">
 			<label class="clickable" for="monthStart">Begin at start of month (unchecked) or today's date (checked)</label>
 			<br>
-			<input type="checkbox" id="yearSelect" onClick="run()">
+			<input type="checkbox" id="yearSelect" onClick="displayDates()">
 			<label class="clickable" for="yearSelect">This year (unchecked) or next year (checked)</label>
 			<br>
-			<input type="checkbox" id="weekendSelect" onClick="run()">
+			<input type="checkbox" id="weekendSelect" onClick="displayDates()">
 			<label class="clickable" for="weekendSelect">Include weekends (unchecked) or ignore them (checked)</label>
-			<br>			
+			<br>
 			<label for="dateFormatSelect">Choose a date format:&nbsp; </label>
-			<select id="dateFormatSelect" onChange="run()">
+			<select id="dateFormatSelect" onChange="displayDates()">
 				<option value="0">D/M/YY</option>
 				<option value="1">D/M/YYYY</option>
 				<option value="2">DD/MM/YY</option>
@@ -50,7 +50,7 @@
 			</select> 
 			<br>
 			<label for="monthSelect">Choose the month to display:&nbsp; </label>
-			<select id="monthSelect" onChange="run()">
+			<select id="monthSelect" onChange="displayDates()">
 				<option value="current">This Month</option>
 				<option value="0">January (1)</option>
 				<option value="1">February (2)</option>
@@ -67,6 +67,7 @@
 			</select> 
 			<br><br>
 			<input type="button" value="Copy Dates" onclick="copyDates();" />
+			<!--<input type="button" value="Download test" onclick="exportDatesToWord(testDatesArray);" />-->
 		</div>
 
 		<textarea id="output" onclick="this.select()"></textarea>

@@ -1,10 +1,36 @@
-//Run the code when the page loads
-run();
+const testDatesArray = [
+    "Monday, May 4, 2026",
+    "Tuesday, May 5, 2026",
+    "Wednesday, May 6, 2026",
+    "Thursday, May 7, 2026",
+    "Friday, May 8, 2026",
+    "Saturday, May 9, 2026",
+    "Sunday, May 10, 2026"
+];
 
-function run(){
+//Puts days of the week into an array so you print name not number (Sunday is 0)
+const dayName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+//Run the code when the page loads
+displayDates();
+
+function displayDates(){
+    datesArray = generateDates();
+
+    console.log(datesArray[0])
+
     //Clear the text
     document.getElementById("output").innerHTML = "";
 
+    //Set the number of rows to display in the textarea
+    output.rows = datesArray.length;
+
+    for (const date of datesArray) {
+        output.innerHTML += date + "\n";
+    }
+}
+
+function getUserVariables(){
     //Get today's date
     var today = new Date();
 
@@ -24,16 +50,10 @@ function run(){
     }
 
     //Select whether to show weekends or not
-    //This sets a variable which is used later and changes the text colour to blue
-    var showWeekends = null;
+    //This sets a variable which is used later
+    var showWeekends = false;
     if (document.getElementById("weekendSelect").checked == true){
         showWeekends = true;
-        //Set the colour of the text (blue)
-        output.style.color = "#0070c0";
-    }
-    else{
-        showWeekends = false;
-        output.style.color = "#000";
     }
 
     //Get the month the user wants to use
@@ -45,6 +65,17 @@ function run(){
     //Get the date format the user wants to use
     var dateFormat = document.getElementById("dateFormatSelect").value;
 
+    return [today, dateFormat, showWeekends]
+}
+
+function generateDates(){
+    var userVariables = getUserVariables();
+    var today = userVariables[0];
+    var dateFormat = userVariables[1];
+    var showWeekends = userVariables[2];
+
+    var outputArray = [];
+
     //Get today's date (and set variables)
     var day = today.getDay();
     var d = today.getDate();
@@ -54,16 +85,6 @@ function run(){
     //dd and mm values are set later
     var dd = null;                  //d is day with no 0 padding, dd has padding
     var mm = null;                  //m is month with no 0 padding, mm has padding
-
-    //Puts days of the week into an array so you print name not number
-    var dayName = [];
-    dayName[0]=  "Sunday";
-    dayName[1] = "Monday";
-    dayName[2] = "Tuesday";
-    dayName[3] = "Wednesday";
-    dayName[4] = "Thursday";
-    dayName[5] = "Friday";
-    dayName[6] = "Saturday";
 
     //Pick correct number of days for each month
     //30 days has September (9), April (4), June (6) and November (11)
@@ -82,9 +103,6 @@ function run(){
     else{
         monthLength = 31;
     }
-
-    //Variable to count the number of rows generated
-    var rowCount = 0;
 
     while (d<=monthLength){
         //Add 0 padding for dd and mm when the values are less than 10
@@ -122,11 +140,9 @@ function run(){
                 today = d+"/"+m+"/"+yy+" ("+dayOfWeek+")";
         }
         
-        //If showWeekends is enabled and the day is a weekend then
-        // don't add the date onto the end of an element with id "output"
-        if (!(showWeekends && (day == 0 || day == 6))){
-            output.innerHTML += today + "\n";
-            rowCount++;
+        //If showWeekends is false and the day is a weekend then don't add the date
+        if (!(!showWeekends && (day == 0 || day == 6))){
+            outputArray.push(today);
         }
 
         //Move onto the next day
@@ -137,8 +153,8 @@ function run(){
             day = 0;
         }
     }
-    //Set the number of rows to display in the textarea
-    output.rows = rowCount;
+
+    return outputArray;
 }
 
 //Add zeros onto the start of a number if it's less than 10
@@ -170,6 +186,61 @@ function copyDates(){
     document.getElementById("output").select();
     document.execCommand("copy");
 }
+
+function exportDatesToWord(datesArray) {
+    // 1. Set up the Word-compatible HTML structure
+    let htmlContent = `
+        <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+        <head>
+            <meta charset='utf-8'>
+            <title>Exported Dates</title>
+        </head>
+        <body>
+            <!-- A table ensures Word respects the layout and borders -->
+            <table style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif; font-size: 12pt;">
+    `;
+
+    // 2. Loop through your dates and create a row for each
+    datesArray.forEach(date => {
+        htmlContent += `
+            <tr>
+                <!-- The inline style here creates the line between dates -->
+                <td style="border-bottom: 1px solid #000000; padding: 10px 0;">
+                    ${date}
+                </td>
+            </tr>
+        `;
+    });
+
+    htmlContent += `
+            </table>
+        </body>
+        </html>
+    `;
+
+    // 3. Create a Blob with the proper MIME type for MS Word
+    // The '\ufeff' adds a Byte Order Mark (BOM) to ensure UTF-8 characters render correctly
+    const blob = new Blob(['\ufeff', htmlContent], {
+        type: 'application/msword'
+    });
+
+    // 4. Create a temporary download link and trigger the save
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'Date_Export.doc'; // The filename for the user
+    
+    document.body.appendChild(link);
+    link.click();
+    
+    // Clean up
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+}
+
+// Example usage:
+// const myDates = ["Monday, May 4, 2026", "Tuesday, May 5, 2026", "Wednesday, May 6, 2026"];
+// exportDatesToWord(myDates);
 
 //Ensures that the page can work offline
 UpUp.start({

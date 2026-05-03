@@ -169,7 +169,11 @@ function copyDates(){
     document.execCommand("copy");
 }
 
+//TODO: Tidy this up!
+//Generate a Word document from these dates
+//The basis for this was written by Google Gemini
 function exportDatesToWord() {
+    alert("This is experimental and may not work correctly")
     // 1. Set up the Word-compatible HTML structure
     let htmlContent = `
         <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
@@ -179,7 +183,7 @@ function exportDatesToWord() {
         </head>
         <body>
             <!-- A table ensures Word respects the layout and borders -->
-            <table style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif; font-size: 12pt;">
+            <table style="border-collapse: collapse; width: 100%; font-family: Aptos, sans-serif; font-size: 11pt;">
     `;
 
     // 2. Loop through your dates and create a row for each
@@ -188,7 +192,9 @@ function exportDatesToWord() {
             <tr>
                 <!-- The inline style here creates the line between dates -->
                 <td style="border-bottom: 1px solid #000000; padding: 10px 0;">
+                    <br>
                     ${date}
+                    <br><br>
                 </td>
             </tr>
         `;
@@ -219,10 +225,6 @@ function exportDatesToWord() {
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
 }
-
-// Example usage:
-// const myDates = ["Monday, May 4, 2026", "Tuesday, May 5, 2026", "Wednesday, May 6, 2026"];
-// exportDatesToWord(myDates);
 
 //Ensures that the page can work offline
 UpUp.start({

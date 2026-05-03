@@ -17,8 +17,6 @@ displayDates();
 function displayDates(){
     datesArray = generateDates();
 
-    console.log(datesArray[0])
-
     //Clear the text
     document.getElementById("output").innerHTML = "";
 
@@ -173,11 +171,11 @@ function startZero(number){
 function toggleVisibility(){
     if(document.getElementById("settingsBar").style.display == "none"){
         document.getElementById("settingsBar").style.display = "block";
-        document.getElementById("hideButton").value = "Hide";
+        document.getElementById("hideButton").value = "Hide Options";
     }
     else{
         document.getElementById("settingsBar").style.display = "none";
-        document.getElementById("hideButton").value = "Show";
+        document.getElementById("hideButton").value = "Show Options";
     }
 }
 
